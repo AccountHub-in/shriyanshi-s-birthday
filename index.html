@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Bestie! 💖</title>
+    
+    <!-- Google Fonts: Playfair Display for elegant headings, Poppins for text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Config for Custom Colors and Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'soft-pink': '#ffd1dc',
+                        'lavender': '#e6e6fa',
+                        'elegant-gold': '#d4af37',
+                        'gold-light': '#f3e5ab',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Poppins"', 'sans-serif'],
+                        script: ['"Great Vibes"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom CSS & Animations */
+        body {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        .bg-gradient-animated {
+            background: linear-gradient(-45deg, #ffd1dc, #e6e6fa, #fff0f5, #f3e5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Cursor Trail */
+        .cursor-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(1);
+            animation: fadeOutTrail 0.8s ease-out forwards;
+        }
+        @keyframes fadeOutTrail {
+            0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(45deg) translateY(20px); }
+        }
+
+        /* Ripple Effect */
+        .ripple-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-anim 0.6s linear;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        @keyframes ripple-anim {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* Floating Notes Animation */
+        @keyframes floatNote {
+            0%, 100% { transform: translateY(0) rotate(var(--rot)); }
+            50% { transform: translateY(-12px) rotate(calc(var(--rot) + 2deg)); }
+        }
+        .note-card {
+            animation: floatNote 4s ease-in-out infinite;
+        }
+        .note-1 { --rot: 2deg; animation-delay: 0s; }
+        .note-2 { --rot: -1deg; animation-delay: -1.5s; }
+        .note-3 { --rot: 3deg; animation-delay: -3s; }
+
+        /* Polaroid Flip Styles */
+        .flip-card {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        .flip-card-back {
+            background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ffb6c1;
+        }
+
+        /* Floating Memory Note */
+        .generated-memory {
+            position: fixed;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 15px 35px rgba(244, 114, 182, 0.3);
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: #d946ef;
+            pointer-events: none;
+            animation: floatUpMemory 5s ease-out forwards;
+            border: 1px solid #fbcfe8;
+        }
+        @keyframes floatUpMemory {
+            0% { opacity: 0; transform: translateY(20px) rotate(-5deg) scale(0.8); }
+            10% { opacity: 1; transform: translateY(0) rotate(2deg) scale(1.05); }
+            80% { opacity: 1; transform: translateY(-100px) rotate(-2deg) scale(1); }
+            100% { opacity: 0; transform: translateY(-150px) rotate(5deg) scale(0.9); }
+        }
+
+        /* Checkbox styling */
+        .promise-checkbox {
+            accent-color: #f472b6;
+            width: 1.25rem;
+            height: 1.25rem;
+            cursor: pointer;
+        }
+
+        /* Elements generated by JS */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .heart-particle, .flower-particle, .sparkle-particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatUp linear forwards;
+            opacity: 0.6;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Timeline Styles */
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, #ffd1dc, #d4af37, #e6e6fa);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: #fff;
+            border: 4px solid #d4af37;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::after {
+            background-color: #ffb6c1;
+            border-color: #f472b6;
+            box-shadow: 0 0 15px #ffb6c1, 0 0 30px #f472b6;
+            transform: scale(1.4);
+        }
+
+        .left-timeline { left: 0; }
+        .right-timeline { left: 50%; }
+        .right-timeline::after { left: -10px; }
+
+        @media screen and (max-width: 768px) {
+            .timeline-container::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 21px; }
+            .right-timeline { left: 0%; }
+        }
+
+        /* Custom Cake & Candle */
+        .cake-layer {
+            border-radius: 10px;
+            box-shadow: inset 0 4px 0 rgba(255,255,255,0.4), 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .drip {
+            background: #fff;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .candle {
+            background: repeating-linear-gradient(45deg, #fff, #fff 5px, #ffb6c1 5px, #ffb6c1 10px);
+            border-radius: 3px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .candle:hover { transform: scale(1.1); box-shadow: 0 0 10px rgba(255,255,255,0.8); }
+
+        .flame {
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            background: radial-gradient(ellipse at bottom, #f3e5ab 10%, #ffd700 50%, #ff8c00 100%);
+            box-shadow: 0 0 15px #ffd700, 0 0 30px #ff8c00;
+            animation: flicker 0.5s infinite alternate;
+            transform-origin: bottom center;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+            50% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+            100% { transform: scale(0.9) rotate(-1deg); opacity: 0.8; }
+        }
+
+        /* Balloon Generator Styles */
+        .balloon {
+            position: fixed;
+            bottom: -100px;
+            width: 40px;
+            height: 50px;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            z-index: 5;
+            animation: floatUp 15s linear infinite;
+        }
+        .balloon::before {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 8px solid currentColor;
+        }
+        .balloon::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 1px;
+            height: 60px;
+            background: rgba(255,255,255,0.6);
+            transform: translateX(-50%);
+        }
+
+        /* Gift Box Specific Styles */
+        .gift-wrap {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+        .gift-wrap:hover { transform: scale(1.05); }
+        .gift-lid {
+            position: absolute;
+            top: 0;
+            left: -10px;
+            width: 180px;
+            height: 45px;
+            background: #f472b6; /* Pink-400 */
+            border-radius: 6px;
+            z-index: 2;
+            transition: all 0.6s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        .gift-lid::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 34px;
+            height: 100%;
+            background: #fcd34d; /* Yellow-300 */
+        }
+        .gift-box-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 160px;
+            height: 120px;
+            background: #fbcfe8; /* Pink-200 */
+            border-radius: 0 0 6px 6px;
+            transition: all 0.6s ease;
+            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.05);
+        }
+        .gift-box-body::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 34px;
+            height: 100%;
+            background: #fcd34d;
+        }
+        .gift-ribbon-center {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border: 10px solid #fcd34d;
+            border-radius: 50%;
+            z-index: 3;
+            transition: all 0.6s ease;
+        }
+        /* Open Animations */
+        .unwrap-anim .gift-lid {
+            transform: translateY(-150px) rotate(-20deg) scale(0);
+            opacity: 0;
+        }
+        .unwrap-anim .gift-ribbon-center {
+            transform: translateX(-50%) translateY(-150px) scale(0);
+            opacity: 0;
+        }
+        .unwrap-anim .gift-box-body {
+            transform: translateY(100px) scale(0);
+            opacity: 0;
+        }
+        .shake-anim { animation: boxShake 0.4s ease infinite; }
+        @keyframes boxShake {
+            0%, 100% { transform: rotate(0deg) scale(1.05); }
+            25% { transform: rotate(-8deg) scale(1.05); }
+            75% { transform: rotate(8deg) scale(1.05); }
+        }
+
+        /* VIP Pass Styles */
+        .vip-pass {
+            background: linear-gradient(135deg, #d4af37, #f3e5ab, #d4af37);
+            color: #5c4000;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .vip-pass::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        /* Hide scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b5952f; }
+
+    </style>
+</head>
+<body class="text-gray-800 font-sans antialiased relative">
+
+    <!-- Audio Element (Placeholder Royalty-Free Music) -->
+    <audio id="bg-music" loop>
+        <source src="bgm.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Memory Generator -->
+    <button id="memory-btn" class="ripple-btn fixed bottom-24 right-6 z-50 px-5 h-12 rounded-full glass flex items-center justify-center text-pink-500 hover:text-white hover:bg-pink-400 transition-all duration-300 shadow-xl border border-white/60 font-semibold tracking-wide">
+        <i class="fas fa-envelope-open-text mr-2"></i> Tap for Memory
+    </button>
+
+    <!-- Floating Music Toggle -->
+    <button id="music-toggle" class="ripple-btn fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full glass flex items-center justify-center text-elegant-gold hover:text-pink-500 hover:scale-110 transition-all duration-300 shadow-xl border border-white/60">
+        <i class="fas fa-music text-xl"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 top-0 transition-all duration-300" id="navbar">
+        <div class="glass mx-auto px-6 py-4 flex justify-between items-center max-w-7xl mt-4 rounded-full border border-white/50">
+            <a href="#" class="font-script text-3xl text-pink-500 font-bold tracking-wider hover:scale-105 transition-transform duration-300">Bestie<span id="secret-heart" class="text-elegant-gold inline-block cursor-pointer hover:scale-125 hover:rotate-12 transition-all duration-300" title="Shh... it's a secret!">💖</span></a>
+            <div class="hidden md:flex space-x-8 font-medium text-gray-700">
+                <a href="#special" class="hover:text-pink-500 transition relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-pink-400 after:transition-all hover:after:w-full">Why You're Special</a>
+                <a href="#timeline" class="hover:text-pink-500 transition relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-pink-400 after:transition-all hover:after:w-full">Our Journey</a>
+                <a href="#gallery" class="hover:text-pink-500 transition relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-pink-400 after:transition-all hover:after:w-full">Memories</a>
+                <a href="#cake-section" class="hover:text-pink-500 transition relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-pink-400 after:transition-all hover:after:w-full">Make a Wish</a>
+            </div>
+            <button onclick="openGift()" class="ripple-btn px-5 py-2 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full hover:shadow-lg hover:shadow-pink-300/50 transition-all transform hover:-translate-y-1 text-sm font-semibold">
+                Open Gift 🎁
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center text-center bg-gradient-animated overflow-hidden px-4">
+        <!-- Background Effects Container -->
+        <div id="hero-effects" class="absolute inset-0 pointer-events-none"></div>
+
+        <div class="z-10 max-w-4xl glass p-10 md:p-16 rounded-3xl animate-float border border-white/60 transition-transform hover:scale-[1.02] duration-500">
+            <!-- Celebration Banner -->
+            <div class="inline-block px-6 py-2 mb-6 rounded-full bg-white/50 border border-pink-200 text-pink-600 font-semibold tracking-wide shadow-sm text-sm uppercase animate-pulse">
+                🎉 It's Celebration Time 🎉
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-gray-800 mb-6 leading-tight">
+                <span class="inline-block reveal active" style="transition-delay: 100ms">Happy</span> 
+                <span class="inline-block reveal active" style="transition-delay: 300ms">Birthday,</span><br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 inline-block reveal active" style="transition-delay: 500ms">My Best Friend!</span> 🎂💖
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-600 font-light mb-10 font-serif italic reveal active" style="transition-delay: 700ms">
+                "A special day for the most amazing person in my life."
+            </p>
+            
+            <a href="#special" class="ripple-btn inline-flex items-center justify-center w-14 h-14 rounded-full bg-white text-pink-400 hover:text-white hover:bg-pink-400 shadow-lg transition-all duration-300 animate-bounce cursor-pointer reveal active" style="transition-delay: 900ms">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+        
+        <!-- Bottom Wave Decor -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
+            <svg class="relative block w-full h-12 md:h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.32,201.2,111.45,240.25,105.9,280.4,96.6,321.39,56.44Z" class="fill-white"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Why You're Special Section -->
+    <section id="special" class="py-24 bg-white relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-4">Why You're <span class="text-elegant-gold hover:text-pink-500 transition-colors duration-300 cursor-default">Special</span></h2>
+                <p class="text-gray-500 max-w-2xl mx-auto font-light">Some of the millions of reasons why I cherish our friendship every single day.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 text-center reveal group hover:bg-pink-50/50" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 mx-auto bg-pink-100 rounded-full flex items-center justify-center text-pink-500 text-2xl mb-6 shadow-inner group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 font-serif">Your Beautiful Heart</h3>
+                    <p class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">You love so deeply and care so genuinely. Your kindness makes the world around you so much better.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-card p-8 text-center reveal group hover:bg-purple-50/50" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 mx-auto bg-purple-100 rounded-full flex items-center justify-center text-purple-500 text-2xl mb-6 shadow-inner group-hover:scale-110 group-hover:-rotate-12 transition-all duration-300">
+                        <i class="fas fa-laugh-beam"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 font-serif">Your Contagious Laugh</h3>
+                    <p class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">No matter how bad a day is, your laughter and humor can instantly turn it completely around.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-card p-8 text-center reveal group hover:bg-yellow-50/50" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 mx-auto bg-yellow-100 rounded-full flex items-center justify-center text-elegant-gold text-2xl mb-6 shadow-inner group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                        <i class="fas fa-anchor"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 font-serif">Your Unwavering Support</h3>
+                    <p class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">You've been my rock through every up and down. I know I can always count on you, no matter what.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Friendship Timeline -->
+    <section id="timeline" class="py-24 bg-gradient-to-b from-white to-pink-50 relative overflow-hidden">
+        <!-- Background decorative blobs -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-4">Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">Journey</span></h2>
+                <p class="text-gray-500 max-w-2xl mx-auto font-light">A little walk down memory lane of our beautiful friendship.</p>
+            </div>
+
+            <div class="timeline-container relative max-w-4xl mx-auto reveal">
+                
+                <div class="timeline-item left-timeline mb-10 group">
+                    <div class="glass-card p-6 border-t-4 border-t-pink-400 group-hover:shadow-pink-200 group-hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="font-bold text-xl text-pink-500 mb-1">The Beginning</h3>
+                        <p class="text-gray-600 text-sm">The day we met. Who knew that a simple hello would turn into a lifetime of craziness.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right-timeline mb-10 group">
+                    <div class="glass-card p-6 border-t-4 border-t-purple-400 group-hover:shadow-purple-200 group-hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="font-bold text-xl text-purple-500 mb-1">Unforgettable Trips</h3>
+                        <p class="text-gray-600 text-sm">Getting lost in our own campus, eating everything in sight like a baby, and making memories that we still laugh about until we cry.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left-timeline mb-10 group">
+                    <div class="glass-card p-6 border-t-4 border-t-elegant-gold group-hover:shadow-yellow-200 group-hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="font-bold text-xl text-elegant-gold mb-1">Through Thick & Thin</h3>
+                        <p class="text-gray-600 text-sm">Late night calls, video chats, and celebrating the little victories. We survived it all together.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right-timeline group">
+                    <div class="glass-card p-6 border-t-4 border-t-pink-500 group-hover:shadow-pink-300 group-hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="font-bold text-xl text-pink-600 mb-1">Today</h3>
+                        <p class="text-gray-600 text-sm">Celebrating the amazing woman you are today. I am so incredibly proud to call you my best friend.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section id="gallery" class="py-24 bg-pink-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-4">Beautiful <span class="text-pink-500">Memories</span></h2>
+                <p class="text-gray-500 max-w-2xl mx-auto font-light">Snapshots of joy, love, and our chaotic perfection. (Hover to flip!)</p>
+            </div>
+
+            <!-- Polaroid Flip Gallery -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                
+                <div class="flip-card h-80 reveal cursor-pointer" style="transition-delay: 100ms;">
+                    <div class="flip-card-inner shadow-lg rounded-2xl">
+                        <div class="flip-card-front overflow-hidden rounded-2xl bg-white border-8 border-white border-b-[40px] shadow-sm">
+                            <img src="smiles forever.jpeg" alt="Memory" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flip-card-back shadow-inner rounded-2xl bg-white">
+                            <p class="font-script text-3xl text-pink-600 leading-relaxed px-4">"You have the most beautiful smile anyone coud ever ask for! ✨"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card h-80 reveal cursor-pointer" style="transition-delay: 200ms;">
+                    <div class="flip-card-inner shadow-lg rounded-2xl">
+                        <div class="flip-card-front overflow-hidden rounded-2xl bg-white border-8 border-white border-b-[40px] shadow-sm">
+                            <img src="partner in crime.jpeg" alt="Memory" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flip-card-back shadow-inner rounded-2xl bg-white">
+                            <p class="font-script text-3xl text-purple-600 leading-relaxed px-4">"Partners in crime since day one! 👯‍♀️"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card h-80 reveal cursor-pointer" style="transition-delay: 300ms;">
+                    <div class="flip-card-inner shadow-lg rounded-2xl">
+                        <div class="flip-card-front overflow-hidden rounded-2xl bg-white border-8 border-white border-b-[40px] shadow-sm">
+                            <img src="beautiful soul.jpeg" alt="Memory" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flip-card-back shadow-inner rounded-2xl bg-white">
+                            <p class="font-script text-3xl text-pink-500 leading-relaxed px-4">"To the most beautiful soul inside and out! 💖"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card h-80 reveal cursor-pointer" style="transition-delay: 400ms;">
+                    <div class="flip-card-inner shadow-lg rounded-2xl">
+                        <div class="flip-card-front overflow-hidden rounded-2xl bg-white border-8 border-white border-b-[40px] shadow-sm">
+                            <img src="golden hours.jpeg" alt="Memory" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flip-card-back shadow-inner rounded-2xl bg-white">
+                            <p class="font-script text-3xl text-yellow-600 leading-relaxed px-4">"Our golden hour all together was unmatched here. 🌅"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card h-80 reveal cursor-pointer" style="transition-delay: 500ms;">
+                    <div class="flip-card-inner shadow-lg rounded-2xl">
+                        <div class="flip-card-front overflow-hidden rounded-2xl bg-white border-8 border-white border-b-[40px] shadow-sm">
+                            <img src="chocolate dates.jpeg" alt="Memory" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flip-card-back shadow-inner rounded-2xl bg-white">
+                            <p class="font-script text-3xl text-purple-600 leading-relaxed px-4">"Love the way you eating chocolate like a baby. 🍫 "</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card h-80 reveal cursor-pointer" style="transition-delay: 600ms;">
+                    <div class="flip-card-inner shadow-lg rounded-2xl">
+                        <div class="flip-card-front overflow-hidden rounded-2xl bg-white border-8 border-white border-b-[40px] shadow-sm">
+                            <img src="endless laughter.jpeg" alt="Memory" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flip-card-back shadow-inner rounded-2xl bg-white">
+                            <p class="font-script text-3xl text-pink-600 leading-relaxed px-4">"Literally the definition of endless joy. 😂"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Cake Section -->
+    <section id="cake-section" class="py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-4">Make a <span class="text-elegant-gold">Wish</span></h2>
+            <p class="text-gray-500 mb-12 font-light">Click on the unlit candles to light them up, make your wish, and let the magic happen!</p>
+
+            <!-- CSS Art Cake -->
+            <div class="relative w-64 h-64 mx-auto mt-16 mb-8 transform hover:scale-105 transition-transform duration-500">
+                <!-- Plate -->
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-72 h-6 bg-gray-200 rounded-[50%] shadow-[0_10px_10px_rgba(0,0,0,0.1)] border-b-4 border-gray-300"></div>
+                
+                <!-- Bottom Layer -->
+                <div class="cake-layer absolute bottom-4 left-1/2 transform -translate-x-1/2 w-56 h-20 bg-pink-200 flex justify-between px-2 pt-1">
+                    <!-- Drips -->
+                    <div class="drip w-6 h-8"></div><div class="drip w-8 h-10 mt-1"></div><div class="drip w-5 h-6"></div><div class="drip w-7 h-12 mt-2"></div><div class="drip w-6 h-7"></div><div class="drip w-8 h-9 mt-1"></div><div class="drip w-5 h-6"></div>
+                </div>
+                
+                <!-- Middle Layer -->
+                <div class="cake-layer absolute bottom-24 left-1/2 transform -translate-x-1/2 w-44 h-16 bg-pink-300 flex justify-between px-1 pt-1">
+                    <div class="drip w-5 h-6"></div><div class="drip w-7 h-8 mt-1"></div><div class="drip w-6 h-10"></div><div class="drip w-5 h-7 mt-2"></div><div class="drip w-6 h-9"></div><div class="drip w-5 h-6"></div>
+                </div>
+                
+                <!-- Top Layer -->
+                <div class="cake-layer absolute bottom-40 left-1/2 transform -translate-x-1/2 w-32 h-14 bg-pink-400 flex justify-between px-1 pt-1">
+                    <div class="drip w-4 h-5"></div><div class="drip w-6 h-8 mt-1"></div><div class="drip w-5 h-6"></div><div class="drip w-6 h-7 mt-1"></div><div class="drip w-4 h-5"></div>
+                </div>
+
+                <!-- Candles -->
+                <div class="absolute bottom-[210px] left-1/2 transform -translate-x-1/2 flex space-x-6">
+                    <!-- Candle 1 -->
+                    <div class="relative w-3 h-12 candle shadow-sm" onclick="lightCandle(this)">
+                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-4 h-6 flame hidden"></div>
+                        <div class="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-gray-800"></div> <!-- Wick -->
+                    </div>
+                    <!-- Candle 2 (Pre-lit for visual) -->
+                    <div class="relative w-3 h-14 candle shadow-sm -mt-2" onclick="lightCandle(this)">
+                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-4 h-6 flame"></div>
+                        <div class="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-gray-800"></div>
+                    </div>
+                    <!-- Candle 3 -->
+                    <div class="relative w-3 h-12 candle shadow-sm" onclick="lightCandle(this)">
+                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-4 h-6 flame hidden"></div>
+                        <div class="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-gray-800"></div>
+                    </div>
+                </div>
+            </div>
+
+            <p id="wish-text" class="text-pink-500 font-script text-4xl h-10 opacity-0 transition-opacity duration-1000">Yay! Your wish has been cast! ✨</p>
+        </div>
+    </section>
+
+    <!-- Memory Wall (Notes) -->
+    <section class="py-24 bg-gradient-to-t from-purple-50 to-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 bg-yellow-50/70 reveal shadow-lg note-card note-1 border border-yellow-200">
+                    <p class="font-script text-2xl text-gray-700 leading-relaxed">"To the one who knows all my secrets and still chooses to be seen in public with me. Happy birthday!"</p>
+                    <p class="text-right text-sm text-gray-500 mt-4 font-semibold">#1</p>
+                </div>
+                <div class="glass-card p-6 bg-pink-50/70 mt-8 reveal shadow-lg note-card note-2 border border-pink-200" style="transition-delay: 100ms;">
+                    <p class="font-script text-2xl text-gray-700 leading-relaxed">"You are more than a friend, you are family. I love you endlessly."</p>
+                    <p class="text-right text-sm text-gray-500 mt-4 font-semibold">#2</p>
+                </div>
+                <div class="glass-card p-6 bg-purple-50/70 reveal shadow-lg note-card note-3 border border-purple-200" style="transition-delay: 200ms;">
+                    <p class="font-script text-2xl text-gray-700 leading-relaxed">"May your day be as beautiful, radiant, and wonderful as your soul is. Cheers to another year!"</p>
+                    <p class="text-right text-sm text-gray-500 mt-4 font-semibold">#3</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bestie Pinky Promise Contract -->
+    <section class="py-20 bg-pink-50 relative overflow-hidden">
+        <div class="max-w-2xl mx-auto px-6 reveal">
+            <div class="glass-card p-8 md:p-10 border-2 border-pink-200 shadow-xl relative">
+                <!-- Ribbon -->
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-pink-400 to-purple-400 text-white px-6 py-1 rounded-full font-bold text-sm shadow-md tracking-wider uppercase whitespace-nowrap">
+                    Official Bestie Contract
+                </div>
+                
+                <h2 class="text-3xl font-serif font-bold text-center text-gray-800 mb-8 mt-4"><i class="fas fa-handshake text-pink-400 mr-2"></i> The unroken Promises</h2>
+                
+                <div class="space-y-5 font-medium text-gray-700 text-lg">
+                    <label class="flex items-start space-x-4 cursor-pointer group">
+                        
+                        <span class="group-hover:text-pink-600 transition-colors">I promise to always tell you if you have food in your teeth.</span>
+                    </label>
+                    <label class="flex items-start space-x-4 cursor-pointer group">
+                       
+                        <span class="group-hover:text-pink-600 transition-colors">I promise to support your completely delusional red-flag crushes.</span>
+                    </label>
+                    <label class="flex items-start space-x-4 cursor-pointer group">
+                       
+                        <span class="group-hover:text-pink-600 transition-colors">I promise to hype up every single selfie you take.</span>
+                    </label>
+                    <label class="flex items-start space-x-4 cursor-pointer group">
+
+                         <span class="group-hover:text-pink-600 transition-colors"> If you die first, I promise to delete your browser history before your family finds it.</span>
+                    </label>
+                    <label class="flex items-start space-x-4 cursor-pointer group">
+                       
+                        <span class="group-hover:text-pink-600 transition-colors">I promise to be your bestie until we are old and causing chaos in the nursing home.</span>
+                    </label>
+                </div>
+                
+                <div class="mt-8 text-center opacity-0 transition-opacity duration-1000" id="contract-signed">
+                    <p class="font-script text-4xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 animate-bounce pt-4 border-t border-pink-100">
+                        Contract Sealed for Life! 💖
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 text-center relative z-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <p class="text-xl font-light tracking-wide mb-4 text-pink-200">
+                Made with <i class="fas fa-heart text-red-500 animate-pulse inline-block"></i> especially for my beloved shriyanshi.🥰
+            </p>
+            <p class="text-gray-500 text-sm">© 2026 made with love</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Immersive Gift Page / Modal -->
+    <div id="gift-modal" class="fixed inset-0 z-[100] hidden bg-pink-50 flex items-center justify-center overflow-y-auto overflow-x-hidden">
+        
+        <!-- Close Button -->
+        <button onclick="closeGift()" class="absolute top-6 right-6 text-gray-500 hover:text-pink-500 text-3xl focus:outline-none z-50 transform hover:rotate-90 transition-transform duration-300">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <!-- Step 1: The CSS Gift Box to Unwrap -->
+        <div id="gift-intro" class="text-center transition-all duration-700 absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <h3 class="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-10">I have a surprise for you...</h3>
+            
+            <div id="gift-wrapper" class="gift-wrap" onclick="interactGift()">
+                <div class="gift-lid"></div>
+                <div class="gift-ribbon-center"></div>
+                <div class="gift-box-body"></div>
+            </div>
+            
+            <p class="text-gray-500 mt-10 font-medium tracking-wide animate-pulse uppercase text-sm">Tap the box to unwrap</p>
+        </div>
+        
+        <!-- Step 2: The Unwrapped Special Content -->
+        <div id="special-gift-content" class="relative max-w-4xl w-full p-6 md:p-12 opacity-0 scale-95 transition-all duration-1000 hidden py-20 mt-10">
+            
+            <div class="text-center mb-12">
+                <h3 class="text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 mb-6 animate-bounce">
+                    Happy Birthday! 🎉
+                </h3>
+                
+                <div class="bg-white/60 backdrop-blur-md p-8 rounded-3xl shadow-xl border border-white transform hover:scale-[1.02] transition-transform duration-500">
+                    <p class="text-gray-700 leading-relaxed font-serif text-lg md:text-xl italic">
+                        "Thank you for being such an incredible friend. Your kindness, laughter, support, and beautiful heart make every day brighter. I am grateful for every memory we've shared and excited for all the adventures still to come. May this year bring you endless happiness, success, love, and unforgettable moments."
+                    </p>
+                </div>
+            </div>
+
+            <!-- The Extra Special VIP Pass -->
+            <div class="vip-pass rounded-2xl p-6 relative overflow-hidden border-2 border-white/50 transform hover:-translate-y-2 transition-transform duration-300 mx-auto max-w-md w-full shadow-2xl">
+                <!-- Background Icon -->
+                <div class="absolute -right-10 -top-10 text-9xl text-white opacity-20"><i class="fas fa-crown"></i></div>
+                
+                <div class="text-center relative z-10">
+                    <h4 class="font-serif font-bold text-2xl md:text-3xl mb-1 uppercase tracking-widest border-b border-black/10 pb-3">VIP Bestie Pass</h4>
+                    <p class="text-sm font-semibold mt-4 mb-3 uppercase tracking-wide">Valid For:</p>
+                    <ul class="text-left text-sm md:text-base space-y-3 mb-6 font-medium pl-2 md:pl-6">
+                        <li class="flex items-center"><i class="fas fa-heart text-pink-600 mr-3 text-lg animate-pulse"></i> Unlimited Hugs & Emotional Support</li>
+                        <li class="flex items-center"><i class="fas fa-coffee text-amber-800 mr-3 text-lg"></i> Free Coffee Dates (My Treat!)</li>
+                        <li class="flex items-center"><i class="fas fa-phone-volume text-blue-600 mr-3 text-lg"></i> 24/7 Emergency Rant Line</li>
+                        <li class="flex items-center"><i class="fas fa-user-secret text-gray-800 mr-3 text-lg"></i> Partner in Crime Immunity</li>
+                    </ul>
+                    <div class="flex justify-between items-center border-t border-black/10 pt-4 text-xs md:text-sm uppercase font-bold text-black/70">
+                        <span>Issued To: The Absolute Best</span>
+                        <span>Expiry: <span class="text-pink-700 animate-pulse">NEVER</span></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions & Animations -->
+    <script>
+        // Setup Global State
+        let allCandlesLit = false;
+        let lastTrailTime = 0;
+
+        // On DOM Load
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollReveal();
+            createFallingConfetti();
+            createHeroEffects();
+            createFloatingBalloons();
+            setupNavbarScroll();
+            setupMusicToggle();
+            setupMagicCursor();
+            setupButtonRipples();
+            
+            // New Interactive Features
+            setupSecretEasterEgg();
+            setupMemoryGenerator();
+            setupPromises();
+        });
+
+        // 1. Scroll Reveal Logic
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            reveals.forEach(reveal => observer.observe(reveal));
+        }
+
+        // 2. Navbar Styling on Scroll
+        function setupNavbarScroll() {
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('py-2', 'bg-white/90', 'backdrop-blur-md', 'shadow-md');
+                    navbar.children[0].classList.remove('mt-4', 'border-white/50');
+                    navbar.children[0].classList.add('border-transparent');
+                } else {
+                    navbar.classList.remove('py-2', 'bg-white/90', 'backdrop-blur-md', 'shadow-md');
+                    navbar.children[0].classList.add('mt-4', 'border-white/50');
+                    navbar.children[0].classList.remove('border-transparent');
+                }
+            });
+        }
+
+        // 3. Audio Toggle Logic
+        function setupMusicToggle() {
+            const musicBtn = document.getElementById('music-toggle');
+            const audio = document.getElementById('bg-music');
+            let isPlaying = false;
+
+            audio.volume = 0.4; 
+
+            musicBtn.addEventListener('click', () => {
+                if (isPlaying) {
+                    audio.pause();
+                    musicBtn.innerHTML = '<i class="fas fa-music text-xl text-elegant-gold"></i>';
+                    musicBtn.classList.remove('animate-pulse');
+                } else {
+                    audio.play().catch(e => console.log("Audio play blocked by browser:", e));
+                    musicBtn.innerHTML = '<i class="fas fa-pause text-xl text-pink-500"></i>';
+                    musicBtn.classList.add('animate-pulse');
+                }
+                isPlaying = !isPlaying;
+            });
+        }
+
+        // 4. Interactive Cake Logic
+        function lightCandle(candleElement) {
+            const flame = candleElement.querySelector('.flame');
+            if (flame.classList.contains('hidden')) {
+                flame.classList.remove('hidden');
+                
+                candleElement.style.transform = 'scale(1.2)';
+                setTimeout(() => candleElement.style.transform = 'scale(1)', 200);
+
+                checkAllCandles();
+            }
+        }
+
+        function checkAllCandles() {
+            const flames = document.querySelectorAll('.flame');
+            let litCount = 0;
+            flames.forEach(f => {
+                if (!f.classList.contains('hidden')) litCount++;
+            });
+
+            if (litCount === flames.length && !allCandlesLit) {
+                allCandlesLit = true;
+                const text = document.getElementById('wish-text');
+                text.style.opacity = '1';
+                text.classList.add('animate-bounce');
+                triggerConfettiRain();
+            }
+        }
+
+        // 5. Immersive Gift Logic
+        function openGift() {
+            const modal = document.getElementById('gift-modal');
+            document.body.style.overflow = 'hidden'; // prevent background scrolling
+            modal.classList.remove('hidden');
+        }
+
+        function interactGift() {
+            const wrap = document.getElementById('gift-wrapper');
+            wrap.classList.add('shake-anim');
+            
+            setTimeout(() => {
+                wrap.classList.remove('shake-anim');
+                wrap.classList.add('unwrap-anim');
+                
+                setTimeout(() => {
+                    document.getElementById('gift-intro').classList.add('hidden');
+                    const content = document.getElementById('special-gift-content');
+                    content.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        content.classList.remove('opacity-0', 'scale-95');
+                        triggerConfettiRain();
+                    }, 50);
+                    
+                }, 600); 
+                
+            }, 1200); 
+        }
+
+        function closeGift() {
+            const modal = document.getElementById('gift-modal');
+            const content = document.getElementById('special-gift-content');
+            const intro = document.getElementById('gift-intro');
+            const wrap = document.getElementById('gift-wrapper');
+            
+            document.body.style.overflow = 'auto'; // restore scrolling
+            modal.classList.add('hidden');
+            
+            content.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                content.classList.add('hidden');
+                intro.classList.remove('hidden');
+                wrap.classList.remove('unwrap-anim');
+            }, 300);
+        }
+
+        // 6. Confetti on Load & Specials
+        function createFallingConfetti() {
+            const colors = ['#ffd1dc', '#e6e6fa', '#d4af37', '#ffffff', '#ffb6c1'];
+            for (let i = 0; i < 70; i++) {
+                createParticle('confetti', colors);
+            }
+        }
+
+        function triggerConfettiRain() {
+            const colors = ['#ff69b4', '#ffd700', '#da70d6', '#ffffff'];
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => createParticle('confetti', colors), i * 20);
+            }
+        }
+
+        function createParticle(type, colors) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const left = Math.random() * 100;
+            const size = Math.random() * 8 + 4;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const duration = Math.random() * 3 + 2;
+            
+            particle.style.left = `${left}vw`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.backgroundColor = color;
+            
+            if (Math.random() > 0.5) particle.style.borderRadius = '50%';
+            
+            particle.style.animation = `confettiFall ${duration}s linear forwards`;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, duration * 1000);
+        }
+
+        // 7. Hero Background Effects
+        function createHeroEffects() {
+            const container = document.getElementById('hero-effects');
+            const svgs = {
+                heart: '<svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full text-pink-300"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>',
+                sparkle: '<svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full text-yellow-300"><path d="M12 2L14.09 8.26L20.5 9.27L15.36 13.09L17.18 19.24L12 15.75L6.82 19.24L8.64 13.09L3.5 9.27L9.91 8.26L12 2Z"/></svg>'
+            };
+
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => spawnHeroParticle(container, svgs), Math.random() * 5000);
+            }
+            
+            setInterval(() => spawnHeroParticle(container, svgs), 800);
+        }
+
+        function spawnHeroParticle(container, svgs) {
+            const el = document.createElement('div');
+            const isHeart = Math.random() > 0.4;
+            el.innerHTML = isHeart ? svgs.heart : svgs.sparkle;
+            el.className = isHeart ? 'heart-particle' : 'sparkle-particle';
+            
+            const size = Math.random() * 20 + 10;
+            const left = Math.random() * 100;
+            const duration = Math.random() * 10 + 10;
+            
+            el.style.width = `${size}px`;
+            el.style.height = `${size}px`;
+            el.style.left = `${left}%`;
+            el.style.bottom = '-50px';
+            el.style.animationDuration = `${duration}s`;
+            
+            container.appendChild(el);
+            
+            setTimeout(() => el.remove(), duration * 1000);
+        }
+
+        // 8. Floating Balloons
+        function createFloatingBalloons() {
+            const colors = ['#ffb6c1', '#dda0dd', '#ffd700', '#ff69b4', '#e6e6fa'];
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => spawnBalloon(colors), i * 3000);
+            }
+        }
+
+        function spawnBalloon(colors) {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            balloon.style.color = color;
+            balloon.style.backgroundColor = color;
+            balloon.style.left = `${Math.random() * 90 + 5}vw`;
+            
+            const scale = Math.random() * 0.5 + 0.8;
+            const duration = Math.random() * 10 + 15;
+            
+            balloon.style.transform = `scale(${scale})`;
+            balloon.style.animationDuration = `${duration}s`;
+            
+            document.body.appendChild(balloon);
+            
+            setTimeout(() => {
+                balloon.remove();
+                spawnBalloon(colors);
+            }, duration * 1000);
+        }
+
+        // 9. Magic Cursor Trail
+        function setupMagicCursor() {
+            document.addEventListener('mousemove', (e) => {
+                const now = Date.now();
+                // Throttle to save performance
+                if (now - lastTrailTime > 40) {
+                    createTrailItem(e.clientX, e.clientY);
+                    lastTrailTime = now;
+                }
+            });
+        }
+
+        function createTrailItem(x, y) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            
+            // Randomly choose between heart and star, and colors
+            const isHeart = Math.random() > 0.5;
+            const colors = ['text-pink-400', 'text-yellow-400', 'text-purple-400'];
+            const colorClass = colors[Math.floor(Math.random() * colors.length)];
+            
+            trail.classList.add(colorClass);
+            trail.innerHTML = isHeart ? '<i class="fas fa-heart"></i>' : '<i class="fas fa-star"></i>';
+            
+            // Slight random offset
+            const offsetX = (Math.random() - 0.5) * 20;
+            const offsetY = (Math.random() - 0.5) * 20;
+            
+            trail.style.left = `${x + offsetX}px`;
+            trail.style.top = `${y + offsetY}px`;
+            
+            document.body.appendChild(trail);
+            setTimeout(() => trail.remove(), 800);
+        }
+
+        // 11. Button Ripple Effect
+        function setupButtonRipples() {
+            const buttons = document.querySelectorAll('.ripple-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.className = 'ripple';
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    
+                    // Calculate size based on button dimensions
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = `${size}px`;
+                    ripple.style.marginLeft = ripple.style.marginTop = `-${size/2}px`;
+                    
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+        }
+
+        // NEW 12. Secret Easter Egg (5 Heart Taps)
+        function setupSecretEasterEgg() {
+            const heart = document.getElementById('secret-heart');
+            let clickCount = 0;
+            let resetTimer;
+
+            heart.addEventListener('click', () => {
+                clickCount++;
+                clearTimeout(resetTimer);
+                
+                // Add tiny pulse animation
+                heart.style.transform = `scale(${1 + (clickCount * 0.2)}) rotate(${clickCount * 10}deg)`;
+                setTimeout(() => heart.style.transform = '', 200);
+
+                if (clickCount >= 5) {
+                    triggerMassiveConfetti();
+                    // Alert replaced by massive visual queue to avoid jarring browser popups
+                    const pop = document.createElement('div');
+                    pop.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9999] bg-white p-8 rounded-3xl shadow-2xl text-center font-serif border-4 border-pink-400';
+                    pop.innerHTML = '<h1 class="text-4xl text-pink-500 mb-2">🤫 YOU FOUND THE SECRET!</h1><p class="text-xl text-gray-700">I love you so much bestie! 💖🎉</p>';
+                    document.body.appendChild(pop);
+                    
+                    setTimeout(() => {
+                        pop.style.transition = 'opacity 1s';
+                        pop.style.opacity = '0';
+                        setTimeout(() => pop.remove(), 1000);
+                    }, 4000);
+
+                    clickCount = 0;
+                } else {
+                    // Reset if they don't click 5 times fast enough
+                    resetTimer = setTimeout(() => { clickCount = 0; heart.style.transform = ''; }, 1500);
+                }
+            });
+        }
+
+        function triggerMassiveConfetti() {
+            const colors = ['#ff0000', '#ff69b4', '#ffd700', '#00ff00', '#00ffff', '#da70d6'];
+            for (let i = 0; i < 300; i++) {
+                setTimeout(() => createParticle('confetti', colors), i * 10);
+            }
+        }
+
+        // NEW 13. Memory Generator
+        function setupMemoryGenerator() {
+            const btn = document.getElementById('memory-btn');
+            const memories = [
+                "You’re not getting older, you’re just getting better at being fabulous. 😂",
+                "You looked stunning in that dress last summer! 👗✨",
+                "Let’s go do something we'll talk about for years 💀",
+                "Thank you for being my emergency therapist 24/7! 🛋️",
+                "I will literally fight anyone who makes you sad. 🥊💖",
+                "You are the smartest, most gorgeous girl I know! 💅",
+            ];
+
+            btn.addEventListener('click', (e) => {
+                const randomMemory = memories[Math.floor(Math.random() * memories.length)];
+                
+                const memoryNote = document.createElement('div');
+                memoryNote.className = 'generated-memory';
+                memoryNote.innerText = randomMemory;
+                
+                // Position randomly around the center/bottom area
+                const randomX = 10 + Math.random() * 60; // 10vw to 70vw
+                const randomY = 40 + Math.random() * 40; // 40vh to 80vh
+                
+                memoryNote.style.left = `${randomX}vw`;
+                memoryNote.style.top = `${randomY}vh`;
+                
+                document.body.appendChild(memoryNote);
+                
+                // Remove after animation completes
+                setTimeout(() => memoryNote.remove(), 4900);
+            });
+        }
+
+        // NEW 14. Bestie Pinky Promise Checklist
+        function setupPromises() {
+            const checkboxes = document.querySelectorAll('.promise-checkbox');
+            const contractSigned = document.getElementById('contract-signed');
+
+            checkboxes.forEach(box => {
+                box.addEventListener('change', () => {
+                    const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+                    if (allChecked) {
+                        contractSigned.classList.remove('hidden');
+                        setTimeout(() => {
+                            contractSigned.style.opacity = '1';
+                            triggerConfettiRain();
+                        }, 50);
+                    } else {
+                        contractSigned.style.opacity = '0';
+                        setTimeout(() => contractSigned.classList.add('hidden'), 1000);
+                    }
+                });
+            });
+        }
+
+    </script>
+</body>
+</html>
